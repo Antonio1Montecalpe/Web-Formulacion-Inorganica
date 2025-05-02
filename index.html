@@ -3,56 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulación Inorgánica</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Ejercicios de Formulación Inorgánica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background: #1e3a8a;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    .section {
+      margin: 30px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .exercise {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Formulación Inorgánica</h1>
-    <p>Hidruros, Óxidos, Hidróxidos y Sales Binarias</p>
-  </header>
 
-  <main>
-    <section id="teoria">
-      <h2>Teoría Básica</h2>
-      <ul>
-        <li><strong>Hidruros:</strong> Compuestos del hidrógeno con un metal o no metal.</li>
-        <li><strong>Óxidos:</strong> Compuestos del oxígeno con otro elemento.</li>
-        <li><strong>Hidróxidos:</strong> Compuestos que contienen el grupo -OH.</li>
-        <li><strong>Sales Binarias:</strong> Compuestos entre un metal y un no metal.</li>
-      </ul>
-    </section>
+<header>
+  <h1>Formulación Inorgánica</h1>
+  <p>Hidruros, Óxidos, Hidróxidos y Sales Binarias</p>
+</header>
 
-    <section id="ejercicios">
-      <h2>Ejercicios</h2>
-      <form id="form-ejercicios">
-        <div class="pregunta">
-          <label>1. ¿Cuál es el nombre de NaH?</label>
-          <input type="text" name="ej1" />
-        </div>
-        <div class="pregunta">
-          <label>2. ¿Fórmula del óxido de hierro (III)?</label>
-          <input type="text" name="ej2" />
-        </div>
-        <div class="pregunta">
-          <label>3. Nombre del compuesto Ca(OH)<sub>2</sub>:</label>
-          <input type="text" name="ej3" />
-        </div>
-        <div class="pregunta">
-          <label>4. Fórmula de la sal cloruro de potasio:</label>
-          <input type="text" name="ej4" />
-        </div>
-        <button type="submit">Corregir</button>
-      </form>
-      <div id="resultados"></div>
-    </section>
-  </main>
+<div class="section" id="hidruros">
+  <h2>Hidruros</h2>
+  <div class="exercise">
+    <label for="hidruro1">Formula del hidruro de sodio:</label>
+    <input type="text" id="hidruro1" placeholder="Ej: NaH" />
+    <button onclick="comprobar('hidruro1', 'NaH')">Comprobar</button>
+    <div class="result" id="resultado-hidruro1"></div>
+  </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Formulación Inorgánica</p>
-  </footer>
+<div class="section" id="oxidos">
+  <h2>Óxidos</h2>
+  <div class="exercise">
+    <label for="oxido1">Formula del óxido de hierro (III):</label>
+    <input type="text" id="oxido1" placeholder="Ej: Fe2O3" />
+    <button onclick="comprobar('oxido1', 'Fe2O3')">Comprobar</button>
+    <div class="result" id="resultado-oxido1"></div>
+  </div>
+</div>
 
-  <script src="script.js"></script>
+<div class="section" id="hidroxidos">
+  <h2>Hidróxidos</h2>
+  <div class="exercise">
+    <label for="hidroxido1">Formula del hidróxido de calcio:</label>
+    <input type="text" id="hidroxido1" placeholder="Ej: Ca(OH)2" />
+    <button onclick="comprobar('hidroxido1', 'Ca(OH)2')">Comprobar</button>
+    <div class="result" id="resultado-hidroxido1"></div>
+  </div>
+</div>
+
+<div class="section" id="sales">
+  <h2>Sales Binarias</h2>
+  <div class="exercise">
+    <label for="sal1">Formula del cloruro de potasio:</label>
+    <input type="text" id="sal1" placeholder="Ej: KCl" />
+    <button onclick="comprobar('sal1', 'KCl')">Comprobar</button>
+    <div class="result" id="resultado-sal1"></div>
+  </div>
+</div>
+
+<script>
+  function comprobar(idInput, solucionCorrecta) {
+    const valor = document.getElementById(idInput).value.trim().toUpperCase();
+    const resultado = document.getElementById("resultado-" + idInput);
+
+    if (valor === solucionCorrecta.toUpperCase()) {
+      resultado.textContent = "¡Correcto!";
+      resultado.className = "result correct";
+    } else {
+      resultado.textContent = "Incorrecto. Inténtalo de nuevo.";
+      resultado.className = "result incorrect";
+    }
+  }
+</script>
+
 </body>
 </html>
 
