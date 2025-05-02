@@ -14,7 +14,9 @@
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f2f4f8;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Tabla_periodica_spanish.png') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(6px);
       color: #333;
     }
 
@@ -38,11 +40,6 @@
       max-width: 900px;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .section:hover {
-      transform: translateY(-3px);
     }
 
     h2 {
@@ -74,9 +71,12 @@
       transition: border 0.2s ease;
     }
 
-    input[type="text"]:focus {
-      border-color: #1e88e5;
-      outline: none;
+    input.correct {
+      border: 2px solid green;
+    }
+
+    input.incorrect {
+      border: 2px solid red;
     }
 
     button {
@@ -93,6 +93,20 @@
 
     button:hover {
       background-color: #1565c0;
+    }
+
+    .feedback {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .correct-text {
+      color: green;
+      font-weight: bold;
+    }
+
+    .incorrect-text {
+      color: red;
     }
 
     .resources {
@@ -152,20 +166,12 @@
       <li>Tradicional: -oso / -ico</li>
     </ul>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Lithium_hydride.jpg/640px-Lithium_hydride.jpg" alt="Ejemplo de hidruro">
-
-    <div class="activity">
-      <strong>Actividad 1:</strong> ¿Cómo se formula el hidruro de calcio?<br>
-      <input type="text" id="hidruro1"><button onclick="check('hidruro1','CaH2')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 2:</strong> ¿Cómo se nombra NaH?<br>
-      <input type="text" id="hidruro2"><button onclick="check('hidruro2','hidruro de sodio')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 3:</strong> Fórmula del hidruro férrico<br>
-      <input type="text" id="hidruro3"><button onclick="check('hidruro3','FeH3')">Comprobar</button>
-    </div>
+  <div class="activity">
+    <strong>Actividad 1:</strong> ¿Cómo se formula el hidruro de calcio?<br>
+    <input type="text" id="hidruro1"><button onclick="check('hidruro1','CaH2')">Comprobar</button>
+    <div id="feedback-hidruro1" class="feedback"></div>
   </div>
+
 
   <div class="section">
     <h2>2. Óxidos</h2>
@@ -251,18 +257,33 @@
     <ul>
       <li><a href="https://es.khanacademy.org/science/quimica" target="_blank">Khan Academy - Química</a></li>
       <li><a href="https://www.youtube.com/watch?v=J8U_f7k9UQE" target="_blank">Vídeo sobre nomenclatura</a></li>
-      <li><a href="https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf" target="_blank">Tabla periódica (PNG)</a></li>
+      <li><a href="https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf" target="_blank">Tabla periódica (PDF)</a></li>
     </ul>
   </div>
 
   <script>
-    function check(inputId, correctAnswer) {
-      const userInput = document.getElementById(inputId).value.trim().toLowerCase().replace(/\s/g, "");
-      const cleanAnswer = correctAnswer.toLowerCase().replace(/\s/g, "");
-      if (userInput === cleanAnswer) {
-        alert("¡Correcto!");
+    function normalizarTexto(texto) {
+      return texto
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // elimina tildes
+        .replace(/\s+/g, '')                             // elimina espacios
+        .replace(/[^a-zA-Z0-9()]/g, '')                  // elimina otros caracteres
+        .toLowerCase();
+    }
+
+    function check(idInput, respuestaCorrecta) {
+      const input = document.getElementById(idInput);
+      const feedback = document.getElementById("feedback-" + idInput);
+      const valor = normalizarTexto(input.value);
+      const correcta = normalizarTexto(respuestaCorrecta);
+
+      input.classList.remove("correct", "incorrect");
+
+      if (valor === correcta) {
+        input.classList.add("correct");
+        feedback.innerHTML = '<span class="correct-text">¡Correcto!</span>';
       } else {
-        alert("Revisa tu respuesta.");
+        input.classList.add("incorrect");
+        feedback.innerHTML = '<span class="incorrect-text">Incorrecto. Intenta de nuevo.</span>';
       }
     }
   </script>
