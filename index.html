@@ -1,196 +1,270 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Formulación Inorgánica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf') center/cover no-repeat fixed;
-      background-color: rgba(255,255,255,0.85);
-      background-blend-mode: lighten;
-      color: #222;
+      background: #f2f4f8;
+      color: #333;
     }
+
     header {
-      background-color: #2c3e50cc;
+      background: #1e88e5;
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
-      font-size: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-    main {
-      max-width: 1000px;
-      margin: auto;
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .section {
       background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      margin-top: 20px;
+      margin: 30px auto;
+      padding: 25px 20px;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
     }
+
+    .section:hover {
+      transform: translateY(-3px);
+    }
+
     h2 {
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 5px;
+      color: #1e88e5;
+      margin-top: 0;
     }
-    img.teoria-img {
-      width: 100%;
-      max-width: 600px;
-      margin: 10px 0;
+
+    ul {
+      padding-left: 18px;
+    }
+
+    img {
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
       border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    form {
-      margin-top: 10px;
+
+    .activity {
+      margin: 15px 0;
     }
+
     input[type="text"] {
-      padding: 5px;
-      margin: 5px 0;
-      width: 100%;
-      max-width: 400px;
+      padding: 8px 10px;
+      width: 60%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border 0.2s ease;
     }
+
+    input[type="text"]:focus {
+      border-color: #1e88e5;
+      outline: none;
+    }
+
     button {
-      background-color: #3498db;
+      padding: 8px 15px;
+      background-color: #1e88e5;
       color: white;
-      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 10px;
-    }
-    .feedback {
+      font-weight: 600;
       margin-left: 10px;
+      transition: background 0.2s ease;
     }
-    .quiz-result {
-      margin-top: 10px;
-      font-weight: bold;
+
+    button:hover {
+      background-color: #1565c0;
     }
-    footer {
-      text-align: center;
-      margin: 30px 0;
+
+    .resources {
+      max-width: 900px;
+      background: #e3f2fd;
+      padding: 20px;
+      margin: 30px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    a {
-      color: #2980b9;
+
+    .resources ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .resources li {
+      margin-bottom: 10px;
+    }
+
+    .resources a {
+      color: #1e88e5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resources a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    Saberes básicos de la formulación inorgánica (hidruros, óxidos, hidróxidos y sales binarias)
+    <h1>Saberes básicos de la formulación inorgánica (hidruros, óxidos, hidróxidos y sales binarias)</h1>
   </header>
-  <main>
-    <section>
-      <h2>1. Hidruros</h2>
-      <p><strong>¿Qué son?</strong> Compuestos de hidrógeno con otro elemento. El hidrógeno actúa con valencia -1.</p>
-      <p><strong>¿Cómo se formulan?</strong> Se escribe el elemento y luego el H. Se cruzan las valencias.<br>Ejemplo: Calcio (+2) con H (-1) → CaH₂</p>
-      <p><strong>¿Cómo se nombran?</strong><br>
-        Stock: Hidruro de + nombre del elemento + (valencia). Ej: NaH → hidruro de sodio<br>
-        Tradicional: sufijos -oso / -ico. Ej: FeH₂ → hidruro ferroso
-      </p>
-      <img src="/mnt/data/IMG_3345.PNG" alt="hidruros" class="teoria-img">
-      <form class="quiz-form" data-answers='["hidruro de sodio", "hidruro de calcio", "hidruro ferroso"]'>
-        <label>1. NaH →</label><input type="text"><span class="feedback"></span><br>
-        <label>2. CaH₂ →</label><input type="text"><span class="feedback"></span><br>
-        <label>3. FeH₂ →</label><input type="text"><span class="feedback"></span><br>
-        <button type="submit">Corregir</button>
-        <div class="quiz-result"></div>
-      </form>
-    </section>
 
-    <section>
-      <h2>2. Óxidos</h2>
-      <p><strong>¿Qué son?</strong> Compuestos formados por oxígeno y otro elemento. El oxígeno actúa con valencia -2.</p>
-      <p><strong>¿Cómo se formulan?</strong> Se escribe el elemento seguido del oxígeno. Se cruzan las valencias. Ej: Fe₂O₃</p>
-      <p><strong>¿Cómo se nombran?</strong><br>
-        Sistemática: dióxido de carbono<br>
-        Stock: óxido de hierro (II)<br>
-        Tradicional: óxido ferroso, óxido férrico
-      </p>
-      <img src="/mnt/data/IMG_3344.PNG" alt="óxidos" class="teoria-img">
-      <form class="quiz-form" data-answers='["óxido de sodio", "óxido férrico", "dióxido de carbono"]'>
-        <label>1. Na₂O →</label><input type="text"><span class="feedback"></span><br>
-        <label>2. Fe₂O₃ →</label><input type="text"><span class="feedback"></span><br>
-        <label>3. CO₂ →</label><input type="text"><span class="feedback"></span><br>
-        <button type="submit">Corregir</button>
-        <div class="quiz-result"></div>
-      </form>
-    </section>
+  <div class="section">
+    <h2>1. Hidruros</h2>
+    <p><strong>¿Qué son?</strong> Compuestos de hidrógeno con otro elemento. El hidrógeno actúa con valencia -1.</p>
+    <p><strong>¿Cómo se formulan?</strong> Se escribe el elemento y luego el H. Se cruzan las valencias.</p>
+    <p>Ejemplo: Calcio (+2) con H (-1) → CaH₂</p>
+    <p><strong>¿Cómo se nombran?</strong></p>
+    <ul>
+      <li>Stock: Hidruro de + nombre del elemento + (valencia)</li>
+      <li>Tradicional: -oso / -ico</li>
+    </ul>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Lithium_hydride.jpg/640px-Lithium_hydride.jpg" alt="Ejemplo de hidruro">
 
-    <section>
-      <h2>3. Hidróxidos</h2>
-      <p><strong>¿Qué son?</strong> Compuestos de un metal con el grupo OH⁻ (hidroxilo).</p>
-      <p><strong>¿Cómo se formulan?</strong> Metal seguido del grupo OH. Se cruzan las valencias. Ej: Al(OH)₃</p>
-      <p><strong>¿Cómo se nombran?</strong><br>
-        Stock: hidróxido de hierro (III)<br>
-        Tradicional: hidróxido férrico
-      </p>
-      <form class="quiz-form" data-answers='["hidróxido de sodio", "hidróxido de hierro (III)", "hidróxido férrico"]'>
-        <label>1. NaOH →</label><input type="text"><span class="feedback"></span><br>
-        <label>2. Fe(OH)₃ →</label><input type="text"><span class="feedback"></span><br>
-        <label>3. Fe(OH)₃ →</label><input type="text"><span class="feedback"></span><br>
-        <button type="submit">Corregir</button>
-        <div class="quiz-result"></div>
-      </form>
-    </section>
+    <div class="activity">
+      <strong>Actividad 1:</strong> ¿Cómo se formula el hidruro de calcio?<br>
+      <input type="text" id="hidruro1"><button onclick="check('hidruro1','CaH2')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 2:</strong> ¿Cómo se nombra NaH?<br>
+      <input type="text" id="hidruro2"><button onclick="check('hidruro2','hidruro de sodio')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 3:</strong> Fórmula del hidruro férrico<br>
+      <input type="text" id="hidruro3"><button onclick="check('hidruro3','FeH3')">Comprobar</button>
+    </div>
+  </div>
 
-    <section>
-      <h2>4. Sales Binarias</h2>
-      <p><strong>¿Qué son?</strong> Compuestos de un metal y un no metal, sin oxígeno.</p>
-      <p><strong>¿Cómo se formulan?</strong> Metal seguido del no metal. Se cruzan valencias. Ej: NaCl</p>
-      <p><strong>¿Cómo se nombran?</strong><br>
-        Stock: cloruro de sodio<br>
-        Tradicional: cloruro férrico
-      </p>
-      <form class="quiz-form" data-answers='["cloruro de sodio", "cloruro ferroso", "cloruro férrico"]'>
-        <label>1. NaCl →</label><input type="text"><span class="feedback"></span><br>
-        <label>2. FeCl₂ →</label><input type="text"><span class="feedback"></span><br>
-        <label>3. FeCl₃ →</label><input type="text"><span class="feedback"></span><br>
-        <button type="submit">Corregir</button>
-        <div class="quiz-result"></div>
-      </form>
-    </section>
+  <div class="section">
+    <h2>2. Óxidos</h2>
+    <p><strong>¿Qué son?</strong> Compuestos de oxígeno con otro elemento. El oxígeno actúa con valencia -2.</p>
+    <p><strong>¿Cómo se formulan?</strong> Se escribe primero el elemento y luego el oxígeno. Se cruzan las valencias.</p>
+    <p>Ejemplo: Fe (+3) con O (-2) → Fe₂O₃</p>
+    <p><strong>¿Cómo se nombran?</strong></p>
+    <ul>
+      <li>Sistemática: dióxido de carbono</li>
+      <li>Stock: óxido de hierro (II)</li>
+      <li>Tradicional: óxido férrico</li>
+    </ul>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iron%283%29_oxide.jpg/640px-Iron%283%29_oxide.jpg" alt="Óxido férrico">
 
-    <footer>
-      <h3>Recursos Educativos Adicionales</h3>
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=JWyNhlm2fi8" target="_blank">Vídeo: Formulación básica</a></li>
-        <li><a href="https://www.educa2.madrid.org/web/quimica/formulacion-inorganica" target="_blank">Guía de la Comunidad de Madrid</a></li>
-        <li><a href="https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf" target="_blank">Tabla periódica PDF</a></li>
-      </ul>
-    </footer>
-  </main>
+    <div class="activity">
+      <strong>Actividad 1:</strong> ¿Cómo se formula el óxido de calcio?<br>
+      <input type="text" id="oxido1"><button onclick="check('oxido1','CaO')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 2:</strong> ¿Cómo se nombra Fe₂O₃?<br>
+      <input type="text" id="oxido2"><button onclick="check('oxido2','óxido férrico')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 3:</strong> Fórmula del dióxido de carbono<br>
+      <input type="text" id="oxido3"><button onclick="check('oxido3','CO2')">Comprobar</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Hidróxidos</h2>
+    <p><strong>¿Qué son?</strong> Compuestos de un metal con el grupo OH⁻.</p>
+    <p><strong>¿Cómo se formulan?</strong> Se escribe el metal seguido de (OH), cruzando valencias.</p>
+    <p>Ejemplo: Al (+3) con OH (-1) → Al(OH)₃</p>
+    <p><strong>¿Cómo se nombran?</strong></p>
+    <ul>
+      <li>Stock: hidróxido de hierro (III)</li>
+      <li>Tradicional: hidróxido ferroso</li>
+    </ul>
+    <img src="IMG_3344.PNG" alt="Hidróxido de hierro">
+
+    <div class="activity">
+      <strong>Actividad 1:</strong> ¿Cómo se formula el hidróxido de sodio?<br>
+      <input type="text" id="hidroxido1"><button onclick="check('hidroxido1','NaOH')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 2:</strong> ¿Cómo se nombra Fe(OH)₂?<br>
+      <input type="text" id="hidroxido2"><button onclick="check('hidroxido2','hidróxido ferroso')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 3:</strong> Fórmula del hidróxido de calcio<br>
+      <input type="text" id="hidroxido3"><button onclick="check('hidroxido3','Ca(OH)2')">Comprobar</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Sales binarias</h2>
+    <p><strong>¿Qué son?</strong> Compuestos de un metal y un no metal, sin oxígeno.</p>
+    <p><strong>¿Cómo se formulan?</strong> Se escribe primero el metal y luego el no metal. Se cruzan valencias.</p>
+    <p>Ejemplo: Fe (+3) con Cl (-1) → FeCl₃</p>
+    <p><strong>¿Cómo se nombran?</strong></p>
+    <ul>
+      <li>Stock: Cloruro de hierro (III)</li>
+      <li>Tradicional: Cloruro férrico</li>
+    </ul>
+    <img src="IMG_3345.PNG" alt="Cloruro férrico">
+
+    <div class="activity">
+      <strong>Actividad 1:</strong> ¿Cómo se formula el cloruro de sodio?<br>
+      <input type="text" id="sal1"><button onclick="check('sal1','NaCl')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 2:</strong> ¿Cómo se nombra FeCl₂?<br>
+      <input type="text" id="sal2"><button onclick="check('sal2','cloruro ferroso')">Comprobar</button>
+    </div>
+    <div class="activity">
+      <strong>Actividad 3:</strong> Fórmula del cloruro de hierro (III)<br>
+      <input type="text" id="sal3"><button onclick="check('sal3','FeCl3')">Comprobar</button>
+    </div>
+  </div>
+
+  <div class="resources">
+    <h2>Recursos adicionales</h2>
+    <ul>
+      <li><a href="https://es.khanacademy.org/science/quimica" target="_blank">Khan Academy - Química</a></li>
+      <li><a href="https://www.youtube.com/watch?v=J8U_f7k9UQE" target="_blank">Vídeo sobre nomenclatura</a></li>
+      <li><a href="https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf" target="_blank">Tabla periódica (PNG)</a></li>
+    </ul>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll(".quiz-form").forEach(form => {
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const inputs = form.querySelectorAll("input[type='text']");
-          const answers = JSON.parse(form.dataset.answers);
-          let correct = 0;
-
-          inputs.forEach((input, i) => {
-            const feedback = input.nextElementSibling;
-            const userAnswer = input.value.trim().toLowerCase();
-            const correctAnswer = answers[i].toLowerCase();
-
-            if (userAnswer === correctAnswer) {
-              feedback.textContent = "✅ Correcto";
-              feedback.style.color = "green";
-              correct++;
-            } else {
-              feedback.textContent = `❌ Incorrecto (Respuesta: ${answers[i]})`;
-              feedback.style.color = "red";
-            }
-          });
-
-          const result = form.querySelector(".quiz-result");
-          result.textContent = `Has acertado ${correct} de ${answers.length}`;
-          result.style.fontWeight = "bold";
-          result.style.marginTop = "10px";
-        });
-      });
-    });
+    function check(inputId, correctAnswer) {
+      const userInput = document.getElementById(inputId).value.trim().toLowerCase().replace(/\s/g, "");
+      const cleanAnswer = correctAnswer.toLowerCase().replace(/\s/g, "");
+      if (userInput === cleanAnswer) {
+        alert("¡Correcto!");
+      } else {
+        alert("Revisa tu respuesta.");
+      }
+    }
   </script>
 </body>
 </html>
