@@ -331,20 +331,42 @@
         </section>
 
         <section id="sales">
-            <div class="ejemplo">
-                <h3>Ejemplos:</h3>
+            <h2>Sales</h2>
+            <p>Las sales son compuestos formados por un cation y un anion. Pueden ser:</p>
+            <ul>
+                <li>Sales binarias: formadas por un metal y un no metal</li>
+                <li>Oxisales: formadas por un metal, un no metal y oxígeno</li>
+            </ul>
+            
+            <section id="sales-binarias">
+                <h3>Sales Binarias</h3>
+                <p>Las sales binarias son compuestos formados por un cation (generalmente un metal) y un anion (generalmente un no metal). Para formular una sal binaria, se deben equilibrar las cargas del cation y el anion.</p>
+                
+                <h4>Tipos de Sales Binarias</h4>
                 <ul>
-                    <li>Cloruro de sodio (NaCl): Sodio (+1) + Cloro (-1)</li>
-                    <li>Sulfato de cobre (CuSO₄): Cobre (+2) + Sulfato (-2)</li>
-                    <li>Nitrato de amonio (NH₄NO₃): Amonio (+1) + Nitrato (-1)</li>
+                    <li><strong>Sales simples:</strong> Formadas por un metal y un no metal simple (ej: Cl⁻, Br⁻, I⁻)</li>
+                    <li><strong>Sales de amonio:</strong> Formadas por el ion amonio (NH₄⁺) y un no metal</li>
+                    <li><strong>Sales con metales de valencia variable:</strong> Donde el metal puede tener diferentes cargas (ej: hierro puede ser Fe²⁺ o Fe³⁺)</li>
                 </ul>
-            </div>
-            <div class="actividad">
-                <h3>Actividad 3: Sales</h3>
-                <p>Verifica las fórmulas de las siguientes sales:</p>
-                <div class="interactivo-container">
-                    <div class="input-group">
-                        <label for="sal1">Cloruro de potasio:</label>
+
+                <h4>Reglas de Formulación</h4>
+                <ol>
+                    <li>El cation siempre se escribe primero</li>
+                    <li>El anion siempre se escribe después</li>
+                    <li>Se equilibran las cargas para que la sal sea eléctricamente neutra</li>
+                    <li>Los números subíndice indican el número de átomos de cada elemento</li>
+                    <li>Si el cation o anion tiene carga múltiple, se usa paréntesis para indicar el número de iones</li>
+                </ol>
+
+                <h4>Ejemplos de Formulación</h4>
+                <div class="ejemplo">
+                    <ul>
+                        <li>Cloruro de sodio (NaCl): Sodio (+1) + Cloro (-1)</li>
+                        <li>Cloruro de calcio (CaCl₂): Calcio (+2) + 2 Cloros (-1)</li>
+                        <li>Nitrato de amonio (NH₄NO₃): Amonio (+1) + Nitrato (-1)</li>
+                        <li>Sulfato de hierro (II) [FeSO₄]: Hierro (+2) + Sulfato (-2)</li>
+                        <li>Sulfato de hierro (III) [Fe₂(SO₄)₃]: Hierro (+3) + 3 Sulfatos (-2)</li>
+                    </ul>
                         <input type="text" id="sal1" placeholder="Escribe la fórmula">
                         <button onclick="verificarFormula('sal1', 'KCl')">Verificar</button>
                     </div>
