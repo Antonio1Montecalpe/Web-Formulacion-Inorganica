@@ -355,14 +355,14 @@
                         <button onclick="verificarFormula('sal1', 'KCl')">Verificar</button>
                     </div>
                     <div class="input-group">
-                        <label for="sal2">Sulfato de hierro (II):</label>
+                        <label for="sal2">ioduro de aluminio:</label>
                         <input type="text" id="sal2" placeholder="Escribe la fórmula">
-                        <button onclick="verificarFormula('sal2', 'FeSO₄')">Verificar</button>
+                        <button onclick="verificarFormula('sal2', 'AlI₃')">Verificar</button>
                     </div>
                     <div class="input-group">
-                        <label for="sal3">Nitrato de calcio:</label>
+                        <label for="sal3">bromuro de cobalto (II):</label>
                         <input type="text" id="sal3" placeholder="Escribe la fórmula">
-                        <button onclick="verificarFormula('sal3', 'Ca(NO₃)₂')">Verificar</button>
+                        <button onclick="verificarFormula('sal3', 'CoBr₂')">Verificar</button>
                     </div>
                     <div id="resultado3"></div>
                 </div>
@@ -434,39 +434,101 @@
     </footer>
 
     <script>
-        // Función para verificar fórmulas
-        function verificarFormula(idInput, formulaCorrecta) {
-            const input = document.getElementById(idInput);
-            const resultado = document.getElementById('resultado' + idInput.charAt(0));
-            const formula = input.value.trim();
-            
-            if (formula === formulaCorrecta) {
-                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formula} es la fórmula correcta.</p>`;
-            } else {
-                resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
-            }
-        }
+       const compuestos = {
+    // Óxidos
+    "óxido de hierro (II)": "FeO",
+    "óxido de aluminio": "Al₂O₃",
+    "óxido de magnesio": "MgO",
+    
+    // Hidróxidos
+    "hidróxido de potasio": "KOH",
+    "hidróxido de magnesio": "Mg(OH)₂",
+    "hidróxido de hierro (III)": "Fe(OH)₃",
+    
+    // Hidruros
+    "hidruro de potasio": "KH",
+    "hidruro de magnesio": "MgH₂",
+    "hidruro de hierro (II)": "FeH₂",
+    
+    // Sales binarias
+    "cloruro de sodio": "NaCl", 
+    "ioduro de aluminio": "AlI₃", 
+    "bromuro de cobalto (II)": "CoBr₂"
+    
 
-        // Función para verificar nombres
-        function verificarNombre(idInput, nombreCorrecto) {
-            const input = document.getElementById(idInput);
-            const resultado = document.getElementById('resultado' + idInput.charAt(0));
-            const nombre = input.value.toLowerCase().trim();
-            
-            if (nombre === nombreCorrecto) {
-                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombre} es el nombre correcto.</p>`;
-            } else {
-                resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
-            }
-        }
+// Función para verificar fórmulas
+function verificarFormula(idInput, formulaCorrecta) {
+    const input = document.getElementById(idInput);
+    const resultado = document.getElementById('resultado' + idInput.charAt(0));
+    const formula = input.value.trim();
+    
+    if (formula === formulaCorrecta) {
+        resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formula} es la fórmula correcta.</p>`;
+        input.style.borderColor = 'green';
+    } else {
+        resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
+        input.style.borderColor = 'red';
+    }
+}
 
-        // Limpiar resultados al escribir
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', () => {
-                const resultadoId = 'resultado' + input.id.charAt(0);
-                document.getElementById(resultadoId).innerHTML = '';
-            });
-        });
+// Función para verificar nombres
+function verificarNombre(idInput, nombreCorrecto) {
+    const input = document.getElementById(idInput);
+    const resultado = document.getElementById('resultado' + idInput.charAt(0));
+    const nombre = input.value.toLowerCase().trim();
+    
+    if (nombre === nombreCorrecto) {
+        resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombre} es el nombre correcto.</p>`;
+        input.style.borderColor = 'green';
+    } else {
+        resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
+        input.style.borderColor = 'red';
+    }
+}
+
+// Limpiar resultados al escribir
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', () => {
+        const resultadoId = 'resultado' + input.id.charAt(0);
+        const resultado = document.getElementById(resultadoId);
+        if (resultado) resultado.innerHTML = '';
+        input.style.borderColor = '#ddd';
+    });
+});
+
+// Función para verificar todas las respuestas de una actividad
+function verificarActividad(nombreActividad) {
+    const inputs = document.querySelectorAll(`[data-actividad="${nombreActividad}"]`);
+    let correctas = 0;
+    let total = inputs.length;
+    
+    inputs.forEach(input => {
+        const resultado = document.getElementById('resultado' + input.id.charAt(0));
+        if (resultado.innerHTML.includes('Correcto')) correctas++;
+    });
+    
+    if (correctas === total) {
+        alert(`¡Excelente! Has completado correctamente la actividad ${nombreActividad}.`);
+    } else {
+        alert(`Has completado ${correctas} de ${total} respuestas correctamente en la actividad ${nombreActividad}.`);
+    }
+}
+    
+    if (nombre) {
+        resultado.innerHTML = `<p>La fórmula ${formula} corresponde a: ${nombre[0]}</p>`;
+    } else {
+        resultado.innerHTML = '<p>Fórmula no encontrada en la base de datos.</p>';
+    }
+}
+
+// Limpiar campos al inicio
+document.getElementById('nombre').addEventListener('input', () => {
+    document.getElementById('resultado').innerHTML = '';
+});
+
+document.getElementById('formula').addEventListener('input', () => {
+    document.getElementById('resultado').innerHTML = '';
+});
     </script>
 </body>
 </html>
