@@ -237,12 +237,25 @@
             </div>
             <div class="actividad">
                 <h3>Actividad 1: Óxidos</h3>
-                <p>Escribe la fórmula de los siguientes óxidos:</p>
-                <ol>
-                    <li>Óxido de magnesio</li>
-                    <li>Óxido de hierro (II)</li>
-                    <li>Óxido de aluminio</li>
-                </ol>
+                <p>Verifica las fórmulas de los siguientes óxidos:</p>
+                <div class="interactivo-container">
+                    <div class="input-group">
+                        <label for="oxido1">Óxido de magnesio:</label>
+                        <input type="text" id="oxido1" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('oxido1', 'MgO')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="oxido2">Óxido de hierro (II):</label>
+                        <input type="text" id="oxido2" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('oxido2', 'FeO')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="oxido3">Óxido de aluminio:</label>
+                        <input type="text" id="oxido3" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('oxido3', 'Al₂O₃')">Verificar</button>
+                    </div>
+                    <div id="resultado1"></div>
+                </div>
             </div>
         </section>
 
@@ -259,12 +272,25 @@
             </div>
             <div class="actividad">
                 <h3>Actividad 2: Hidróxidos</h3>
-                <p>Escribe la fórmula de los siguientes hidróxidos:</p>
-                <ol>
-                    <li>Hidróxido de potasio</li>
-                    <li>Hidróxido de hierro (III)</li>
-                    <li>Hidróxido de magnesio</li>
-                </ol>
+                <p>Verifica las fórmulas de los siguientes hidróxidos:</p>
+                <div class="interactivo-container">
+                    <div class="input-group">
+                        <label for="hidroxido1">Hidróxido de potasio:</label>
+                        <input type="text" id="hidroxido1" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('hidroxido1', 'KOH')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="hidroxido2">Hidróxido de hierro (III):</label>
+                        <input type="text" id="hidroxido2" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('hidroxido2', 'Fe(OH)₃')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="hidroxido3">Hidróxido de magnesio:</label>
+                        <input type="text" id="hidroxido3" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('hidroxido3', 'Mg(OH)₂')">Verificar</button>
+                    </div>
+                    <div id="resultado2"></div>
+                </div>
             </div>
         </section>
 
@@ -285,29 +311,25 @@
             </div>
             <div class="actividad">
                 <h3>Actividad 3: Sales</h3>
-                <p>Escribe la fórmula de las siguientes sales:</p>
-                <ol>
-                    <li>Cloruro de potasio</li>
-                    <li>Sulfato de hierro (II)</li>
-                    <li>Nitrato de calcio</li>
-                </ol>
-            </div>
-        </section>
-
-        <section id="interactivo">
-            <h2>Sistema Interactivo</h2>
-            <div class="interactivo-container">
-                <div class="input-group">
-                    <label for="nombre">Nombre del compuesto:</label>
-                    <input type="text" id="nombre" placeholder="Ej: Óxido de calcio">
-                    <button onclick="buscarFormula()">Buscar Fórmula</button>
+                <p>Verifica las fórmulas de las siguientes sales:</p>
+                <div class="interactivo-container">
+                    <div class="input-group">
+                        <label for="sal1">Cloruro de potasio:</label>
+                        <input type="text" id="sal1" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('sal1', 'KCl')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="sal2">Sulfato de hierro (II):</label>
+                        <input type="text" id="sal2" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('sal2', 'FeSO₄')">Verificar</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="sal3">Nitrato de calcio:</label>
+                        <input type="text" id="sal3" placeholder="Escribe la fórmula">
+                        <button onclick="verificarFormula('sal3', 'Ca(NO₃)₂')">Verificar</button>
+                    </div>
+                    <div id="resultado3"></div>
                 </div>
-                <div class="input-group">
-                    <label for="formula">Fórmula del compuesto:</label>
-                    <input type="text" id="formula" placeholder="Ej: CaO">
-                    <button onclick="buscarNombre()">Buscar Nombre</button>
-                </div>
-                <div id="resultado"></div>
             </div>
         </section>
 
@@ -372,73 +394,39 @@
     </footer>
 
     <script>
-        const compuestos = {
-            // Óxidos
-            "óxido de calcio": "CaO",
-            "óxido de hierro (III)": "Fe₂O₃",
-            "óxido de aluminio": "Al₂O₃",
-            "óxido de magnesio": "MgO",
-            "óxido de hierro (II)": "FeO",
+        // Función para verificar fórmulas
+        function verificarFormula(idInput, formulaCorrecta) {
+            const input = document.getElementById(idInput);
+            const resultado = document.getElementById('resultado' + idInput.charAt(0));
+            const formula = input.value.trim();
             
-            // Hidróxidos
-            "hidróxido de sodio": "NaOH",
-            "hidróxido de potasio": "KOH",
-            "hidróxido de calcio": "Ca(OH)₂",
-            "hidróxido de aluminio": "Al(OH)₃",
-            "hidróxido de magnesio": "Mg(OH)₂",
-            "hidróxido de hierro (III)": "Fe(OH)₃",
-            
-            // Sales binarias
-            "cloruro de sodio": "NaCl",
-            "cloruro de potasio": "KCl",
-            "cloruro de magnesio": "MgCl₂",
-            "cloruro de hierro (II)": "FeCl₂",
-            "cloruro de hierro (III)": "FeCl₃",
-            "sulfato de cobre": "CuSO₄",
-            "carbonato de calcio": "CaCO₃",
-            "nitrato de amonio": "NH₄NO₃",
-            "sulfato de hierro (II)": "FeSO₄",
-            "nitrato de calcio": "Ca(NO₃)₂",
-            
-            // Oxisales
-            "sulfato de hierro (II)": "FeSO₄",
-            "sulfato de hierro (III)": "Fe₂(SO₄)₃",
-            "nitrato de aluminio": "Al(NO₃)₃",
-            "sulfato de aluminio": "Al₂(SO₄)₃"
-        };
-
-        function buscarFormula() {
-            const nombre = document.getElementById('nombre').value.toLowerCase();
-            const resultado = document.getElementById('resultado');
-            
-            if (compuestos[nombre]) {
-                resultado.innerHTML = `<p>La fórmula de ${nombre} es: ${compuestos[nombre]}</p>`;
+            if (formula === formulaCorrecta) {
+                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formula} es la fórmula correcta.</p>`;
             } else {
-                resultado.innerHTML = '<p>Compuesto no encontrado en la base de datos.</p>';
+                resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
             }
         }
 
-        function buscarNombre() {
-            const formula = document.getElementById('formula').value;
-            const resultado = document.getElementById('resultado');
+        // Función para verificar nombres
+        function verificarNombre(idInput, nombreCorrecto) {
+            const input = document.getElementById(idInput);
+            const resultado = document.getElementById('resultado' + idInput.charAt(0));
+            const nombre = input.value.toLowerCase().trim();
             
-            const nombre = Object.entries(compuestos).find(([_, f]) => f === formula);
-            
-            if (nombre) {
-                resultado.innerHTML = `<p>La fórmula ${formula} corresponde a: ${nombre[0]}</p>`;
+            if (nombre === nombreCorrecto) {
+                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombre} es el nombre correcto.</p>`;
             } else {
-                resultado.innerHTML = '<p>Fórmula no encontrada en la base de datos.</p>';
+                resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
             }
         }
 
-        // Limpiar campos al inicio
-document.getElementById('nombre').addEventListener('input', () => {
-    document.getElementById('resultado').innerHTML = '';
-});
-
-document.getElementById('formula').addEventListener('input', () => {
-    document.getElementById('resultado').innerHTML = '';
-});
+        // Limpiar resultados al escribir
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                const resultadoId = 'resultado' + input.id.charAt(0);
+                document.getElementById(resultadoId).innerHTML = '';
+            });
+        });
     </script>
 </body>
 </html>
