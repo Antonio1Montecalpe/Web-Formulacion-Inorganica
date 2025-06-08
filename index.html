@@ -1,299 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formulación Inorgánica</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulación Inorgánica - Guía Educativa</title>
+    <style>
+        /* Variables de colores */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --highlight-color: #e74c3c;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Tabla_periodica_spanish.png') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(6px);
-      color: #333;
-    }
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background: #1e88e5;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
 
-    .section {
-      background: white;
-      margin: 30px auto;
-      padding: 25px 20px;
-      max-width: 900px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+        header h1 {
+            margin-bottom: 1rem;
+        }
 
-    h2 {
-      color: #1e88e5;
-      margin-top: 0;
-    }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    ul {
-      padding-left: 18px;
-    }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
 
-    img {
-      display: block;
-      margin: 15px auto;
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .activity {
-      margin: 15px 0;
-    }
+        /* Main */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-    input[type="text"] {
-      padding: 8px 10px;
-      width: 60%;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      transition: border 0.2s ease;
-    }
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    input.correct {
-      border: 2px solid green;
-    }
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
 
-    input.incorrect {
-      border: 2px solid red;
-    }
+        /* Sistema Interactivo */
+        .interactivo-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    button {
-      padding: 8px 15px;
-      background-color: #1e88e5;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 10px;
-      transition: background 0.2s ease;
-    }
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
 
-    button:hover {
-      background-color: #1565c0;
-    }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
 
-    .feedback {
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
 
-    .correct-text {
-      color: green;
-      font-weight: bold;
-    }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .incorrect-text {
-      color: red;
-    }
+        button:hover {
+            background-color: #357abd;
+        }
 
-    .resources {
-      max-width: 900px;
-      background: #e3f2fd;
-      padding: 20px;
-      margin: 30px auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+        #resultado {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
 
-    .resources ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
+        /* Recursos */
+        .recursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
 
-    .resources li {
-      margin-bottom: 10px;
-    }
+        .recurso {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    .resources a {
-      color: #1e88e5;
-      text-decoration: none;
-      font-weight: 600;
-    }
+        .recurso h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
 
-    .resources a:hover {
-      text-decoration: underline;
-    }
+        .recurso a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+        }
 
-    @media (max-width: 600px) {
-      input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-      }
+        .recurso a:hover {
+            color: var(--highlight-color);
+        }
 
-      button {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-  </style>
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        /* Estilos adicionales */
+        .ejemplo {
+            background: #f5f6fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                text-align: center;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Saberes básicos de la formulación inorgánica (hidruros, óxidos, hidróxidos y sales binarias)</h1>
-  </header>
+    <header>
+        <h1>Formulación Inorgánica</h1>
+        <nav>
+            <ul>
+                <li><a href="#oxidos">Óxidos</a></li>
+                <li><a href="#hidroxidos">Hidróxidos</a></li>
+                <li><a href="#sales">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="section">
-    <h2>1. Hidruros</h2>
-    <p><strong>¿Qué son?</strong> Compuestos de hidrógeno con otro elemento. El hidrógeno actúa con valencia -1.</p>
-    <p><strong>¿Cómo se formulan?</strong> Se escribe el elemento y luego el H. Se cruzan las valencias.</p>
-    <p>Ejemplo: Calcio (+2) con H (-1) → CaH₂</p>
-    <p><strong>¿Cómo se nombran?</strong></p>
-    <ul>
-      <li>Stock: Hidruro de + nombre del elemento + (valencia)</li>
-      <li>Tradicional: -oso / -ico</li>
-    </ul>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Lithium_hydride.jpg/640px-Lithium_hydride.jpg" alt="Ejemplo de hidruro">
-  <div class="activity">
-    <strong>Actividad 1:</strong> ¿Cómo se formula el hidruro de calcio?<br>
-    <input type="text" id="hidruro1"><button onclick="check('hidruro1','CaH2')">Comprobar</button>
-    <div id="feedback-hidruro1" class="feedback"></div>
-  </div>
- <div class="activity">
-      <strong>Actividad 2:</strong> ¿Cómo se nombra NaH?<br>
-      <input type="text" id="hidruro2"><button onclick="check('hidruro2','hidruro de sodio')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 3:</strong> Fórmula del hidruro férrico<br>
-      <input type="text" id="hidruro3"><button onclick="check('hidruro3','FeH3')">Comprobar</button>
-    </div>
-  </div>
+    <main>
+        <section id="introduccion">
+            <h2>Introducción a la Formulación Inorgánica</h2>
+            <p>La formulación inorgánica es el proceso de determinar la fórmula química de un compuesto inorgánico a partir de su nombre o viceversa.</p>
+        </section>
 
-<div class="section">
-    <h2>2. Óxidos</h2>
-    <p><strong>¿Qué son?</strong> Compuestos de oxígeno con otro elemento. El oxígeno actúa con valencia -2.</p>
-    <p><strong>¿Cómo se formulan?</strong> Se escribe primero el elemento y luego el oxígeno. Se cruzan las valencias.</p>
-    <p>Ejemplo: Fe (+3) con O (-2) → Fe₂O₃</p>
-    <p><strong>¿Cómo se nombran?</strong></p>
-    <ul>
-      <li>Sistemática: dióxido de carbono</li>
-      <li>Stock: óxido de hierro (II)</li>
-      <li>Tradicional: óxido férrico</li>
-    </ul>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Iron%283%29_oxide.jpg/640px-Iron%283%29_oxide.jpg" alt="Óxido férrico">
+        <section id="oxidos">
+            <h2>Óxidos</h2>
+            <p>Los óxidos son compuestos formados por un metal y oxígeno. Su fórmula se obtiene equilibrando las cargas del metal y el oxígeno (-2).</p>
+            <div class="ejemplo">
+                <p>Ejemplo: Óxido de calcio (CaO)</p>
+            </div>
+        </section>
 
-    <div class="activity">
-      <strong>Actividad 1:</strong> ¿Cómo se formula el óxido de calcio?<br>
-      <input type="text" id="oxido1"><button onclick="check('oxido1','CaO')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 2:</strong> ¿Cómo se nombra Fe₂O₃?<br>
-      <input type="text" id="oxido2"><button onclick="check('oxido2','óxido férrico')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 3:</strong> Fórmula del dióxido de carbono<br>
-      <input type="text" id="oxido3"><button onclick="check('oxido3','CO2')">Comprobar</button>
-    </div>
-  </div>
+        <section id="hidroxidos">
+            <h2>Hidróxidos</h2>
+            <p>Los hidróxidos son compuestos formados por un metal y el grupo hidroxilo (OH-). Se equilibran las cargas del metal con el hidróxido (-1).</p>
+            <div class="ejemplo">
+                <p>Ejemplo: Hidróxido de sodio (NaOH)</p>
+            </div>
+        </section>
 
-  <div class="section">
-    <h2>3. Hidróxidos</h2>
-    <p><strong>¿Qué son?</strong> Compuestos de un metal con el grupo OH⁻.</p>
-    <p><strong>¿Cómo se formulan?</strong> Se escribe el metal seguido de (OH), cruzando valencias.</p>
-    <p>Ejemplo: Al (+3) con OH (-1) → Al(OH)₃</p>
-    <p><strong>¿Cómo se nombran?</strong></p>
-    <ul>
-      <li>Stock: hidróxido de hierro (III)</li>
-      <li>Tradicional: hidróxido ferroso</li>
-    </ul>
-    <img src="IMG_3344.PNG" alt="Hidróxido de hierro">
-
-    <div class="activity">
-      <strong>Actividad 1:</strong> ¿Cómo se formula el hidróxido de sodio?<br>
-      <input type="text" id="hidroxido1"><button onclick="check('hidroxido1','NaOH')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 2:</strong> ¿Cómo se nombra Fe(OH)₂?<br>
-      <input type="text" id="hidroxido2"><button onclick="check('hidroxido2','hidróxido ferroso','dihidróxido de hierro')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 3:</strong> Fórmula del hidróxido de calcio<br>
-      <input type="text" id="hidroxido3"><button onclick="check('hidroxido3','Ca(OH)2')">Comprobar</button>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>4. Sales binarias</h2>
-    <p><strong>¿Qué son?</strong> Compuestos de un metal y un no metal, sin oxígeno.</p>
-    <p><strong>¿Cómo se formulan?</strong> Se escribe primero el metal y luego el no metal. Se cruzan valencias.</p>
-    <p>Ejemplo: Fe (+3) con Cl (-1) → FeCl₃</p>
-    <p><strong>¿Cómo se nombran?</strong></p>
-    <ul>
-      <li>Stock: Cloruro de hierro (III)</li>
-      <li>Tradicional: Cloruro férrico</li>
-    </ul>
-    <img src="IMG_3345.PNG" alt="Cloruro férrico">
-
-    <div class="activity">
-      <strong>Actividad 1:</strong> ¿Cómo se formula el cloruro de sodio?<br>
-      <input type="text" id="sal1"><button onclick="check('sal1','NaCl')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 2:</strong> ¿Cómo se nombra FeCl₂?<br>
-      <input type="text" id="sal2"><button onclick="check('sal2','cloruro ferroso')">Comprobar</button>
-    </div>
-    <div class="activity">
-      <strong>Actividad 3:</strong> Fórmula del cloruro de hierro (III)<br>
-      <input type="text" id="sal3"><button onclick="check('sal3','FeCl3')">Comprobar</button>
-    </div>
-  </div>
-
-  <div class="resources">
-    <h2>Recursos adicionales</h2>
-    <ul>
-      <li><a href="https://es.khanacademy.org/science/quimica" target="_blank">Khan Academy - Química</a></li>
-      <li><a href="https://www.youtube.com/watch?v=J8U_f7k9UQE" target="_blank">Vídeo sobre nomenclatura</a></li>
-      <li><a href="https://www.udt.cl/wp-content/uploads/tabla-periodica2.pdf" target="_blank">Tabla periódica (PDF)</a></li>
-    </ul>
-  </div>
-
-  <script>
-    function normalizarTexto(texto) {
-      return texto
-        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // elimina tildes
-        .replace(/\s+/g, '')                             // elimina espacios
-        .replace(/[^a-zA-Z0-9()]/g, '')                  // elimina otros caracteres
-        .toLowerCase();
-    }
-
-    function check(idInput, respuestaCorrecta) {
-      const input = document.getElementById(idInput);
-      const feedback = document.getElementById("feedback-" + idInput);
-      const valor = normalizarTexto(input.value);
-      const correcta = normalizarTexto(respuestaCorrecta);
-
-      input.classList.remove("correct", "incorrect");
-
-      if (valor === correcta) {
-        input.classList.add("correct");
-        feedback.innerHTML = '<span class="correct-text">¡Correcto!</span>';
-      } else {
-        input.classList.add("incorrect");
-        feedback.innerHTML = '<span class="incorrect-text">Incorrecto. Intenta de nuevo.</span>';
-      }
-    }
-  </script>
-</body>
-</html>
+        <section id="sales">
+            <h2>Sales</h2>
+            <p>Las sales son compuestos formados por un cation y un anion. Pueden ser binarias (metal y no metal) u oxisales (metal, no metal y oxígeno).</p>
+            <div class="ejemplo">
+                <p>Ejemplos:</p>
+                <ul>
+                    <li>Cloruro de sodio (NaCl)</li> 
