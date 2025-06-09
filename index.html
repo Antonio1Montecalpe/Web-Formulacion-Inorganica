@@ -307,7 +307,7 @@
                 </ul>
             </div>
             <div class="actividad">
-                <h3>Actividad 3: Hidruros</h3>
+                <h3>Actividad 6: Hidruros</h3>
                 <p>Verifica las fórmulas de los siguientes hidruros:</p>
                 <div class="interactivo-container">
                     <div class="input-group">
@@ -346,7 +346,7 @@
                 </ul>
             </div>
             <div class="actividad">
-                <h3>Actividad 4: Sales</h3>
+                <h3>Actividad 3: Sales</h3>
                 <p>Verifica las fórmulas de las siguientes sales:</p>
                 <div class="interactivo-container">
                     <div class="input-group">
@@ -355,14 +355,14 @@
                         <button onclick="verificarFormula('sal1', 'KCl')">Verificar</button>
                     </div>
                     <div class="input-group">
-                        <label for="sal2">ioduro de aluminio:</label>
+                        <label for="sal2">Sulfato de hierro (II):</label>
                         <input type="text" id="sal2" placeholder="Escribe la fórmula">
-                        <button onclick="verificarFormula('sal2', 'AlI₃')">Verificar</button>
+                        <button onclick="verificarFormula('sal2', 'FeSO₄')">Verificar</button>
                     </div>
                     <div class="input-group">
-                        <label for="sal3">bromuro de cobalto (II):</label>
+                        <label for="sal3">Nitrato de calcio:</label>
                         <input type="text" id="sal3" placeholder="Escribe la fórmula">
-                        <button onclick="verificarFormula('sal3', 'CoBr₂')">Verificar</button>
+                        <button onclick="verificarFormula('sal3', 'Ca(NO₃)₂')">Verificar</button>
                     </div>
                     <div id="resultado3"></div>
                 </div>
@@ -372,7 +372,7 @@
         <section id="actividades">
             <h2>Actividades Prácticas</h2>
             <div class="actividad">
-                <h3>Actividad 5: Formulación Compleja</h3>
+                <h3>Actividad 4: Formulación Compleja</h3>
                 <p>Escribe la fórmula de los siguientes compuestos:</p>
                 <ol>
                     <li>Óxido de hierro (III)</li>
@@ -383,7 +383,7 @@
             </div>
 
             <div class="actividad">
-                <h3>Actividad 6: Nomenclatura</h3>
+                <h3>Actividad 5: Nomenclatura</h3>
                 <p>Escribe el nombre de los siguientes compuestos:</p>
                 <ol>
                     <li>Fe₂O₃</li>
@@ -434,162 +434,41 @@
     </footer>
 
     <script>
-    const compuestos = {
-        // Óxidos
-        "óxido de hierro (II)": "FeO",
-        "óxido de aluminio": "Al₂O₃",
-        "óxido de magnesio": "MgO",
-        
-        // Hidróxidos
-        "hidróxido de potasio": "KOH",
-        "hidróxido de magnesio": "Mg(OH)₂",
-        "hidróxido de hierro (III)": "Fe(OH)₃",
-        
-        // Hidruros
-        "hidruro de potasio": "KH",
-        "hidruro de magnesio": "MgH₂",
-        "hidruro de hierro (II)": "FeH₂",
-        
-        // Sales binarias
-        "cloruro de sodio": "NaCl", 
-        "ioduro de aluminio": "AlI₃", 
-        "bromuro de cobalto (II)": "CoBr₂"
-    }
+        // Función para verificar fórmulas
+        function verificarFormula(idInput, formulaCorrecta) {
+            const input = document.getElementById(idInput);
+            const resultado = document.getElementById('resultado' + idInput.charAt(0));
+            const formula = input.value.trim();
+            
+            if (formula === formulaCorrecta) {
+                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formula} es la fórmula correcta.</p>`;
+            } else {
+                resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
+            }
+        }
 
-    // Limpiar resultados al escribir
-    document.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', () => {
-            const resultadoId = 'resultado' + input.id.charAt(0);
-            const resultado = document.getElementById(resultadoId);
-            if (resultado) resultado.innerHTML = '';
-            input.style.borderColor = '#ddd';
+        // Función para verificar nombres
+        function verificarNombre(idInput, nombreCorrecto) {
+            const input = document.getElementById(idInput);
+            const resultado = document.getElementById('resultado' + idInput.charAt(0));
+            const nombre = input.value.toLowerCase().trim();
+            
+            if (nombre === nombreCorrecto) {
+                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombre} es el nombre correcto.</p>`;
+            } else {
+                resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
+            }
+        }
+
+        // Limpiar resultados al escribir
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                const resultadoId = 'resultado' + input.id.charAt(0);
+                document.getElementById(resultadoId).innerHTML = '';
+            });
         });
-    });
-
-  <section>
-    <h2>Óxidos</h2>
-    <div>
-      <label>óxido de hierro (II): <input type="text" id="input-ox1"></label>
-      <button onclick="verificar('óxido de hierro (II)', 'input-ox1', 'res-ox1')">Verificar</button>
-      <div id="res-ox1" class="resultado"></div>
-    </div>
-    <div>
-      <label>óxido de aluminio: <input type="text" id="input-ox2"></label>
-      <button onclick="verificar('óxido de aluminio', 'input-ox2', 'res-ox2')">Verificar</button>
-      <div id="res-ox2" class="resultado"></div>
-    </div>
-    <div>
-      <label>óxido de magnesio: <input type="text" id="input-ox3"></label>
-      <button onclick="verificar('óxido de magnesio', 'input-ox3', 'res-ox3')">Verificar</button>
-      <div id="res-ox3" class="resultado"></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Hidróxidos</h2>
-    <div>
-      <label>hidróxido de potasio: <input type="text" id="input-hid1"></label>
-      <button onclick="verificar('hidróxido de potasio', 'input-hid1', 'res-hid1')">Verificar</button>
-      <div id="res-hid1" class="resultado"></div>
-    </div>
-    <div>
-      <label>hidróxido de magnesio: <input type="text" id="input-hid2"></label>
-      <button onclick="verificar('hidróxido de magnesio', 'input-hid2', 'res-hid2')">Verificar</button>
-      <div id="res-hid2" class="resultado"></div>
-    </div>
-    <div>
-      <label>hidróxido de hierro (III): <input type="text" id="input-hid3"></label>
-      <button onclick="verificar('hidróxido de hierro (III)', 'input-hid3', 'res-hid3')">Verificar</button>
-      <div id="res-hid3" class="resultado"></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Hidruros</h2>
-    <div>
-      <label>hidruro de potasio: <input type="text" id="input-hidr1"></label>
-      <button onclick="verificar('hidruro de potasio', 'input-hidr1', 'res-hidr1')">Verificar</button>
-      <div id="res-hidr1" class="resultado"></div>
-    </div>
-    <div>
-      <label>hidruro de magnesio: <input type="text" id="input-hidr2"></label>
-      <button onclick="verificar('hidruro de magnesio', 'input-hidr2', 'res-hidr2')">Verificar</button>
-      <div id="res-hidr2" class="resultado"></div>
-    </div>
-    <div>
-      <label>hidruro de hierro (II): <input type="text" id="input-hidr3"></label>
-      <button onclick="verificar('hidruro de hierro (II)', 'input-hidr3', 'res-hidr3')">Verificar</button>
-      <div id="res-hidr3" class="resultado"></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Sales binarias</h2>
-    <div>
-      <label>cloruro de sodio: <input type="text" id="input-sal1"></label>
-      <button onclick="verificar('cloruro de sodio', 'input-sal1', 'res-sal1')">Verificar</button>
-      <div id="res-sal1" class="resultado"></div>
-    </div>
-    <div>
-      <label>ioduro de aluminio: <input type="text" id="input-sal2"></label>
-      <button onclick="verificar('ioduro de aluminio', 'input-sal2', 'res-sal2')">Verificar</button>
-      <div id="res-sal2" class="resultado"></div>
-    </div>
-    <div>
-      <label>bromuro de cobalto (II): <input type="text" id="input-sal3"></label>
-      <button onclick="verificar('bromuro de cobalto (II)', 'input-sal3', 'res-sal3')">Verificar</button>
-      <div id="res-sal3" class="resultado"></div>
-    </div>
-  </section>
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import ActivitySection from "@/components/activity-section";
-import { Book, Target, Users, Award } from "lucide-react";
-
-export default function ChemistryFormulation() {
-  const oxidesActivities = [
-    { compound: "Óxido de magnesio", answer: "MgO", explanation: "Magnesio (+2) + Oxígeno (-2)" },
-    { compound: "Óxido de hierro (II)", answer: "FeO", explanation: "Hierro (+2) + Oxígeno (-2)" },
-    { compound: "Óxido de aluminio", answer: "Al₂O₃", explanation: "Aluminio (+3) + Oxígeno (-2) → Al₂O₃" }
-  ];
-
-  const hydroxidesActivities = [
-    { compound: "Hidróxido de potasio", answer: "KOH", explanation: "Potasio (+1) + Hidróxido (-1)" },
-    { compound: "Hidróxido de hierro (III)", answer: "Fe(OH)₃", explanation: "Hierro (+3) + 3 Hidróxidos (-1)" },
-    { compound: "Hidróxido de magnesio", answer: "Mg(OH)₂", explanation: "Magnesio (+2) + 2 Hidróxidos (-1)" }
-  ];
-
-  const hydridesActivities = [
-    { compound: "Hidruro de potasio", answer: "KH", explanation: "Potasio (+1) + Hidrógeno (-1)" },
-    { compound: "Hidruro de magnesio", answer: "MgH₂", explanation: "Magnesio (+2) + 2 Hidrógenos (-1)" },
-    { compound: "Hidruro de hierro (II)", answer: "FeH₂", explanation: "Hierro (+2) + 2 Hidrógenos (-1)" }
-  ];
-
-  const saltsActivities = [
-    { compound: "Cloruro de sodio", answer: "NaCl", explanation: "Sodio (+1) + Cloro (-1)" },
-    { compound: "Sulfato de cobre", answer: "CuSO₄", explanation: "Cobre (+2) + Sulfato (-2)" },
-    { compound: "Nitrato de amonio", answer: "NH₄NO₃", explanation: "Amonio (+1) + Nitrato (-1)" }
-  ];
-
-function verificarFormula(inputId, respuestaCorrecta) {
-    const input = document.getElementById(inputId);
-    const valor = input.value.trim().toUpperCase();
-    const respuesta = respuestaCorrecta.toUpperCase();
-
-    let resultadoId = "resultado" + inputId.match(/\d+/)[0]; // extrae el número del inputId
-    const resultado = document.getElementById(resultadoId);
-
-    if (!resultado) return;
-
-    if (valor === respuesta) {
-        resultado.innerHTML = `<p style="color: green;">✅ ¡Correcto!</p>`;
-    } else {
-        resultado.innerHTML = `<p style="color: red;">❌ Incorrecto. Intenta de nuevo.</p>`;
-    }
-}    
-</script>
+    </script>
 </body>
 </html>
 </body>
 </html>
-
