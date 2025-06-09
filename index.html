@@ -454,40 +454,6 @@
         "cloruro de sodio": "NaCl", 
         "ioduro de aluminio": "AlI₃", 
         "bromuro de cobalto (II)": "CoBr₂"
-    };
-
-
-
-    // Función para verificar fórmulas
-    function verificarFormula(idInput, formulaCorrecta) {
-        const input = document.getElementById(idInput);
-        const resultado = document.getElementById('resultado' + idInput.charAt(0));
-        const formula = input.value.trim().toUpperCase();
-        const correcta = formulaCorrecta.trim().toUpperCase();
-
-        if (formula === correcta) {
-            resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formulaCorrecta} es la fórmula correcta.</p>`;
-            input.style.borderColor = 'green';
-        } else {
-            resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
-            input.style.borderColor = 'red';
-        }
-    }
-
-    // Función para verificar nombres
-    function verificarNombre(idInput, nombreCorrecto) {
-        const input = document.getElementById(idInput);
-        const resultado = document.getElementById('resultado' + idInput.charAt(0));
-        const nombre = input.value.toLowerCase().trim();
-        const correcto = nombreCorrecto.toLowerCase().trim();
-
-        if (nombre === correcto) {
-            resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombreCorrecto} es el nombre correcto.</p>`;
-            input.style.borderColor = 'green';
-        } else {
-            resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
-            input.style.borderColor = 'red';
-        }
     }
 
     // Limpiar resultados al escribir
@@ -500,25 +466,82 @@
         });
     });
 
-    // Verificación de toda una actividad
-    function verificarActividad(nombreActividad) {
-        const inputs = document.querySelectorAll(`[data-actividad="${nombreActividad}"]`);
-        let correctas = 0;
-        const total = inputs.length;
+  <section>
+    <h2>Óxidos</h2>
+    <div>
+      <label>óxido de hierro (II): <input type="text" id="input-ox1"></label>
+      <button onclick="verificar('óxido de hierro (II)', 'input-ox1', 'res-ox1')">Verificar</button>
+      <div id="res-ox1" class="resultado"></div>
+    </div>
+    <div>
+      <label>óxido de aluminio: <input type="text" id="input-ox2"></label>
+      <button onclick="verificar('óxido de aluminio', 'input-ox2', 'res-ox2')">Verificar</button>
+      <div id="res-ox2" class="resultado"></div>
+    </div>
+    <div>
+      <label>óxido de magnesio: <input type="text" id="input-ox3"></label>
+      <button onclick="verificar('óxido de magnesio', 'input-ox3', 'res-ox3')">Verificar</button>
+      <div id="res-ox3" class="resultado"></div>
+    </div>
+  </section>
 
-        inputs.forEach(input => {
-            const resultado = document.getElementById('resultado' + input.id.charAt(0));
-            if (resultado && resultado.innerHTML.includes('Correcto')) {
-                correctas++;
-            }
-        });
+  <section>
+    <h2>Hidróxidos</h2>
+    <div>
+      <label>hidróxido de potasio: <input type="text" id="input-hid1"></label>
+      <button onclick="verificar('hidróxido de potasio', 'input-hid1', 'res-hid1')">Verificar</button>
+      <div id="res-hid1" class="resultado"></div>
+    </div>
+    <div>
+      <label>hidróxido de magnesio: <input type="text" id="input-hid2"></label>
+      <button onclick="verificar('hidróxido de magnesio', 'input-hid2', 'res-hid2')">Verificar</button>
+      <div id="res-hid2" class="resultado"></div>
+    </div>
+    <div>
+      <label>hidróxido de hierro (III): <input type="text" id="input-hid3"></label>
+      <button onclick="verificar('hidróxido de hierro (III)', 'input-hid3', 'res-hid3')">Verificar</button>
+      <div id="res-hid3" class="resultado"></div>
+    </div>
+  </section>
 
-        if (correctas === total) {
-            alert(`¡Excelente! Has completado correctamente la actividad "${nombreActividad}".`);
-        } else {
-            alert(`Has completado ${correctas} de ${total} respuestas correctamente en la actividad "${nombreActividad}".`);
-        }
-    }
+  <section>
+    <h2>Hidruros</h2>
+    <div>
+      <label>hidruro de potasio: <input type="text" id="input-hidr1"></label>
+      <button onclick="verificar('hidruro de potasio', 'input-hidr1', 'res-hidr1')">Verificar</button>
+      <div id="res-hidr1" class="resultado"></div>
+    </div>
+    <div>
+      <label>hidruro de magnesio: <input type="text" id="input-hidr2"></label>
+      <button onclick="verificar('hidruro de magnesio', 'input-hidr2', 'res-hidr2')">Verificar</button>
+      <div id="res-hidr2" class="resultado"></div>
+    </div>
+    <div>
+      <label>hidruro de hierro (II): <input type="text" id="input-hidr3"></label>
+      <button onclick="verificar('hidruro de hierro (II)', 'input-hidr3', 'res-hidr3')">Verificar</button>
+      <div id="res-hidr3" class="resultado"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sales binarias</h2>
+    <div>
+      <label>cloruro de sodio: <input type="text" id="input-sal1"></label>
+      <button onclick="verificar('cloruro de sodio', 'input-sal1', 'res-sal1')">Verificar</button>
+      <div id="res-sal1" class="resultado"></div>
+    </div>
+    <div>
+      <label>ioduro de aluminio: <input type="text" id="input-sal2"></label>
+      <button onclick="verificar('ioduro de aluminio', 'input-sal2', 'res-sal2')">Verificar</button>
+      <div id="res-sal2" class="resultado"></div>
+    </div>
+    <div>
+      <label>bromuro de cobalto (II): <input type="text" id="input-sal3"></label>
+      <button onclick="verificar('bromuro de cobalto (II)', 'input-sal3', 'res-sal3')">Verificar</button>
+      <div id="res-sal3" class="resultado"></div>
+    </div>
+  </section>
+
 function verificarFormula(inputId, respuestaCorrecta) {
     const input = document.getElementById(inputId);
     const valor = input.value.trim().toUpperCase();
