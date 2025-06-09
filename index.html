@@ -456,6 +456,25 @@
         "bromuro de cobalto (II)": "CoBr₂"
     };
 
+
+function verificarFormula(inputId, respuestaCorrecta) {
+    const input = document.getElementById(inputId);
+    const valor = input.value.trim().toUpperCase();
+    const respuesta = respuestaCorrecta.toUpperCase();
+
+    let resultadoId = "resultado" + inputId.match(/\d+/)[0]; // extrae el número del inputId
+    const resultado = document.getElementById(resultadoId);
+
+    if (!resultado) return;
+
+    if (valor === respuesta) {
+        resultado.innerHTML = `<p style="color: green;">✅ ¡Correcto!</p>`;
+    } else {
+        resultado.innerHTML = `<p style="color: red;">❌ Incorrecto. Intenta de nuevo.</p>`;
+    }
+}
+
+
     // Función para verificar fórmulas
     function verificarFormula(idInput, formulaCorrecta) {
         const input = document.getElementById(idInput);
