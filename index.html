@@ -541,6 +541,35 @@
       <div id="res-sal3" class="resultado"></div>
     </div>
   </section>
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import ActivitySection from "@/components/activity-section";
+import { Book, Target, Users, Award } from "lucide-react";
+
+export default function ChemistryFormulation() {
+  const oxidesActivities = [
+    { compound: "Óxido de magnesio", answer: "MgO", explanation: "Magnesio (+2) + Oxígeno (-2)" },
+    { compound: "Óxido de hierro (II)", answer: "FeO", explanation: "Hierro (+2) + Oxígeno (-2)" },
+    { compound: "Óxido de aluminio", answer: "Al₂O₃", explanation: "Aluminio (+3) + Oxígeno (-2) → Al₂O₃" }
+  ];
+
+  const hydroxidesActivities = [
+    { compound: "Hidróxido de potasio", answer: "KOH", explanation: "Potasio (+1) + Hidróxido (-1)" },
+    { compound: "Hidróxido de hierro (III)", answer: "Fe(OH)₃", explanation: "Hierro (+3) + 3 Hidróxidos (-1)" },
+    { compound: "Hidróxido de magnesio", answer: "Mg(OH)₂", explanation: "Magnesio (+2) + 2 Hidróxidos (-1)" }
+  ];
+
+  const hydridesActivities = [
+    { compound: "Hidruro de potasio", answer: "KH", explanation: "Potasio (+1) + Hidrógeno (-1)" },
+    { compound: "Hidruro de magnesio", answer: "MgH₂", explanation: "Magnesio (+2) + 2 Hidrógenos (-1)" },
+    { compound: "Hidruro de hierro (II)", answer: "FeH₂", explanation: "Hierro (+2) + 2 Hidrógenos (-1)" }
+  ];
+
+  const saltsActivities = [
+    { compound: "Cloruro de sodio", answer: "NaCl", explanation: "Sodio (+1) + Cloro (-1)" },
+    { compound: "Sulfato de cobre", answer: "CuSO₄", explanation: "Cobre (+2) + Sulfato (-2)" },
+    { compound: "Nitrato de amonio", answer: "NH₄NO₃", explanation: "Amonio (+1) + Nitrato (-1)" }
+  ];
 
 function verificarFormula(inputId, respuestaCorrecta) {
     const input = document.getElementById(inputId);
