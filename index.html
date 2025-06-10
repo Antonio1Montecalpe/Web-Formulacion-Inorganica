@@ -434,17 +434,27 @@
     </footer>
        <script>
 
-function corregir(inputId, resultId, respuestaCorrecta) {
-      const respuesta = document.getElementById(inputId).value.trim().toLowerCase();
-      const correcta = respuestaCorrecta.trim().toLowerCase();
-      const resultDiv = document.getElementById(resultId);
 
-      if (respuesta === correcta) {
-        resultDiv.textContent = "¡Correcto!";
-      } else {
-        resultDiv.textContent = "Incorrecto. Respuesta correcta: " + respuestaCorrecta;
-      }
+    function verificarFormula(inputId, formulaCorrecta) {
+        const input = document.getElementById(inputId);
+        const valorUsuario = input.value.trim().replace(/ /g, "").toUpperCase();
+        const formulaEsperada = formulaCorrecta.replace(/ /g, "").toUpperCase();
+
+        // Determinar en qué bloque de resultados mostrar la respuesta
+        let resultadoId = '';
+        if (inputId.startsWith('oxido')) resultadoId = 'resultado1';
+        else if (inputId.startsWith('hidroxido')) resultadoId = 'resultado2';
+        else if (inputId.startsWith('sal')) resultadoId = 'resultado3';
+        else if (inputId.startsWith('hidruro')) resultadoId = 'resultado6';
+
+        const resultado = document.getElementById(resultadoId);
+        if (valorUsuario === formulaEsperada) {
+            resultado.innerHTML += `<p>✅ Correcto: ${formulaCorrecta}</p>`;
+        } else {
+            resultado.innerHTML += `<p>❌ Incorrecto. Intenta de nuevo.</p>`;
+        }
     }
+
 </script>
 
 </body>
