@@ -442,20 +442,7 @@
       const mensajeAnterior = ejercicio.querySelector('.mensaje-resultado');
       if (mensajeAnterior) mensajeAnterior.remove();
 
-      // Crea mensaje nuevo
-      const mensaje = document.createElement('div');
-      mensaje.classList.add('mensaje-resultado');
-
-      if (valorIngresado === formulaCorrecta) {
-          mensaje.innerHTML = `<p style="color: green;">¡Correcto! "${valorIngresado}" es la fórmula correcta.</p>`;
-      } else {
-          mensaje.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
-      }
-
-      // Inserta justo debajo del botón
-      boton.insertAdjacentElement('afterend', mensaje);
-  }
-
+    
   // Limpia mensajes automáticamente al escribir
   document.querySelectorAll('input').forEach(input => {
       input.addEventListener('input', () => {
@@ -464,6 +451,38 @@
           if (mensaje) mensaje.remove();
       });
   });
+           function verificarFormula(idCampo, formulaCorrecta) {
+    const campo = document.getElementById(idCampo);
+    const resultadoId = "resultado" + idCampo.match(/\d+/)[0];
+    const resultadoDiv = document.getElementById(resultadoId);
+
+    if (!resultadoDiv) return;
+
+    const respuestaUsuario = campo.value.trim().toUpperCase().replace(/[()₀₁₂₃₄₅₆₇₈₉]/g, match => {
+        // Convert subíndices Unicode a números normales
+        const subindices = {
+            '₀': '0', '₁': '1', '₂': '2', '₃': '3',
+            '₄': '4', '₅': '5', '₆': '6', '₇': '7',
+            '₈': '8', '₉': '9'
+        };
+        return subindices[match] || match;
+    });
+
+    const formulaEsperada = formulaCorrecta.toUpperCase().replace(/[()₀₁₂₃₄₅₆₇₈₉]/g, match => {
+        const subindices = {
+            '₀': '0', '₁': '1', '₂': '2', '₃': '3',
+            '₄': '4', '₅': '5', '₆': '6', '₇': '7',
+            '₈': '8', '₉': '9'
+        };
+        return subindices[match] || match;
+    });
+
+    if (respuestaUsuario === formulaEsperada) {
+        resultadoDiv.innerHTML = `<p style="color: green;">✔ Correcto: ${formulaCorrecta}</p>`;
+    } else {
+        resultadoDiv.innerHTML = `<p style="color: red;">✖ Incorrecto. Intenta nuevamente.</p>`;
+    }
+}
 </script>
 </body>
 </html>
