@@ -432,42 +432,33 @@
     <footer>
         <p>&copy; 2025 Guía de Formulación Inorgánica. Todos los derechos reservados.</p>
     </footer>
+       <script>
+    // Verifica si la fórmula ingresada es correcta
+    function verificarFormula(idInput, formulaCorrecta) {
+        const input = document.getElementById(idInput);
+        const valorIngresado = input.value.trim();
 
-    <script>
-        // Función para verificar fórmulas
-        function verificarFormula(idInput, formulaCorrecta) {
-            const input = document.getElementById(idInput);
-            const resultado = document.getElementById('resultado' + idInput.charAt(0));
-            const formula = input.value.trim();
-            
-            if (formula === formulaCorrecta) {
-                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${formula} es la fórmula correcta.</p>`;
-            } else {
-                resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
-            }
+        const numero = idInput.match(/\d+/)[0]; // Extrae el número del ID
+        const resultado = document.getElementById('resultado' + numero);
+
+        if (valorIngresado === formulaCorrecta) {
+            resultado.innerHTML = `<p style="color: green;">¡Correcto! "${valorIngresado}" es la fórmula correcta.</p>`;
+        } else {
+            resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
         }
+    }
 
-        // Función para verificar nombres
-        function verificarNombre(idInput, nombreCorrecto) {
-            const input = document.getElementById(idInput);
-            const resultado = document.getElementById('resultado' + idInput.charAt(0));
-            const nombre = input.value.toLowerCase().trim();
-            
-            if (nombre === nombreCorrecto) {
-                resultado.innerHTML = `<p style="color: green;">¡Correcto! ${nombre} es el nombre correcto.</p>`;
-            } else {
-                resultado.innerHTML = `<p style="color: red;">Incorrecto. El nombre correcto es: ${nombreCorrecto}</p>`;
+    // Limpia resultados al escribir
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+            const numero = input.id.match(/\d+/)[0];
+            const resultado = document.getElementById('resultado' + numero);
+            if (resultado) {
+                resultado.innerHTML = '';
             }
-        }
-
-        // Limpiar resultados al escribir
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', () => {
-                const resultadoId = 'resultado' + input.id.charAt(0);
-                document.getElementById(resultadoId).innerHTML = '';
-            });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
 </body>
