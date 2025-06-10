@@ -442,7 +442,20 @@
       const mensajeAnterior = ejercicio.querySelector('.mensaje-resultado');
       if (mensajeAnterior) mensajeAnterior.remove();
 
-    
+    function verificarFormula(idInput, formulaCorrecta) {
+    const input = document.getElementById(idInput);
+    const valorUsuario = input.value.trim();
+    const resultadoId = "resultado" + idInput.match(/\d+/)[0];
+    const resultado = document.getElementById(resultadoId);
+
+    if (!resultado) return;
+
+    if (valorUsuario.toLowerCase() === formulaCorrecta.toLowerCase()) {
+        resultado.innerHTML = `<p style="color:green">¡Correcto! ✅</p>`;
+    } else {
+        resultado.innerHTML = `<p style="color:red">❌ Incorrecto. Intenta de nuevo.</p>`;
+    }
+}
   // Limpia mensajes automáticamente al escribir
   document.querySelectorAll('input').forEach(input => {
       input.addEventListener('input', () => {
