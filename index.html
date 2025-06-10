@@ -433,46 +433,18 @@
         <p>&copy; 2025 Guía de Formulación Inorgánica. Todos los derechos reservados.</p>
     </footer>
        <script>
-  // Mapea subíndices Unicode a números normales
-  const convertirSubindices = texto => {
-      const subindices = {
-          '₀': '0', '₁': '1', '₂': '2', '₃': '3',
-          '₄': '4', '₅': '5', '₆': '6', '₇': '7',
-          '₈': '8', '₉': '9'
-      };
-      return texto.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, match => subindices[match] || match);
-  };
 
-  function verificarFormula(idCampo, formulaCorrecta) {
-      const campo = document.getElementById(idCampo);
-      const resultadoId = "resultado" + idCampo.match(/\d+/)[0];
-      const resultadoDiv = document.getElementById(resultadoId);
+function corregir(inputId, resultId, respuestaCorrecta) {
+      const respuesta = document.getElementById(inputId).value.trim().toLowerCase();
+      const correcta = respuestaCorrecta.trim().toLowerCase();
+      const resultDiv = document.getElementById(resultId);
 
-      if (!resultadoDiv) return;
-
-      // Limpiar mensaje anterior
-      resultadoDiv.innerHTML = "";
-
-      // Normalizar y comparar fórmulas
-      const respuestaUsuario = convertirSubindices(campo.value.trim().toUpperCase());
-      const formulaEsperada = convertirSubindices(formulaCorrecta.trim().toUpperCase());
-
-      if (respuestaUsuario === formulaEsperada) {
-          resultadoDiv.innerHTML = `<p style="color: green;">✔ Correcto: ${formulaCorrecta}</p>`;
+      if (respuesta === correcta) {
+        resultDiv.textContent = "¡Correcto!";
       } else {
-          resultadoDiv.innerHTML = `<p style="color: red;">✖ Incorrecto. Intenta nuevamente.</p>`;
+        resultDiv.textContent = "Incorrecto. Respuesta correcta: " + respuestaCorrecta;
       }
-  }
-
-  // Borra el mensaje automáticamente al escribir
-  document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('input').forEach(input => {
-          input.addEventListener('input', () => {
-              const resultadoDiv = document.getElementById("resultado" + input.id.match(/\d+/)[0]);
-              if (resultadoDiv) resultadoDiv.innerHTML = "";
-          });
-      });
-  });
+    }
 </script>
 
 </body>
