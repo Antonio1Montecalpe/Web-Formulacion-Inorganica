@@ -433,31 +433,37 @@
         <p>&copy; 2025 Guía de Formulación Inorgánica. Todos los derechos reservados.</p>
     </footer>
        <script>
-    // Verifica si la fórmula ingresada es correcta
-    function verificarFormula(idInput, formulaCorrecta) {
-        const input = document.getElementById(idInput);
-        const valorIngresado = input.value.trim();
+  function verificarFormula(idInput, formulaCorrecta, boton) {
+      const input = document.getElementById(idInput);
+      const valorIngresado = input.value.trim();
 
-        const numero = idInput.match(/\d+/)[0]; // Extrae el número del ID
-        const resultado = document.getElementById('resultado' + numero);
+      // Elimina mensajes previos si existen
+      const ejercicio = boton.parentElement;
+      const mensajeAnterior = ejercicio.querySelector('.mensaje-resultado');
+      if (mensajeAnterior) mensajeAnterior.remove();
 
-        if (valorIngresado === formulaCorrecta) {
-            resultado.innerHTML = `<p style="color: green;">¡Correcto! "${valorIngresado}" es la fórmula correcta.</p>`;
-        } else {
-            resultado.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
-        }
-    }
+      // Crea mensaje nuevo
+      const mensaje = document.createElement('div');
+      mensaje.classList.add('mensaje-resultado');
 
-    // Limpia resultados al escribir
-    document.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', () => {
-            const numero = input.id.match(/\d+/)[0];
-            const resultado = document.getElementById('resultado' + numero);
-            if (resultado) {
-                resultado.innerHTML = '';
-            }
-        });
-    });
+      if (valorIngresado === formulaCorrecta) {
+          mensaje.innerHTML = `<p style="color: green;">¡Correcto! "${valorIngresado}" es la fórmula correcta.</p>`;
+      } else {
+          mensaje.innerHTML = `<p style="color: red;">Incorrecto. La fórmula correcta es: ${formulaCorrecta}</p>`;
+      }
+
+      // Inserta justo debajo del botón
+      boton.insertAdjacentElement('afterend', mensaje);
+  }
+
+  // Limpia mensajes automáticamente al escribir
+  document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => {
+          const ejercicio = input.parentElement;
+          const mensaje = ejercicio.querySelector('.mensaje-resultado');
+          if (mensaje) mensaje.remove();
+      });
+  });
 </script>
 </body>
 </html>
