@@ -433,80 +433,48 @@
         <p>&copy; 2025 Guía de Formulación Inorgánica. Todos los derechos reservados.</p>
     </footer>
        <script>
-  function verificarFormula(idInput, formulaCorrecta, boton) {
-      const input = document.getElementById(idInput);
-      const valorIngresado = input.value.trim();
+  // Mapea subíndices Unicode a números normales
+  const convertirSubindices = texto => {
+      const subindices = {
+          '₀': '0', '₁': '1', '₂': '2', '₃': '3',
+          '₄': '4', '₅': '5', '₆': '6', '₇': '7',
+          '₈': '8', '₉': '9'
+      };
+      return texto.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, match => subindices[match] || match);
+  };
 
-      // Elimina mensajes previos si existen
-      const ejercicio = boton.parentElement;
-      const mensajeAnterior = ejercicio.querySelector('.mensaje-resultado');
-      if (mensajeAnterior) mensajeAnterior.remove();
+  function verificarFormula(idCampo, formulaCorrecta) {
+      const campo = document.getElementById(idCampo);
+      const resultadoId = "resultado" + idCampo.match(/\d+/)[0];
+      const resultadoDiv = document.getElementById(resultadoId);
 
-    function verificarFormula(idInput, formulaCorrecta) {
-    const input = document.getElementById(idInput);
-    const valorUsuario = input.value.trim();
-    const resultadoId = "resultado" + idInput.match(/\d+/)[0];
-    const resultado = document.getElementById(resultadoId);
+      if (!resultadoDiv) return;
 
-    if (!resultado) return;
-        
-function verificarFormula(inputId, formulaCorrecta) {
-        const input = document.getElementById(inputId);
-        const valorUsuario = input.value.trim();
-        const resultadoId = 'resultado' + inputId.match(/\d+/)[0]; // resultado1, resultado2, etc.
-        const resultadoDiv = document.getElementById(resultadoId);
+      // Limpiar mensaje anterior
+      resultadoDiv.innerHTML = "";
 
-        if (!resultadoDiv) {
-            console.warn(`No se encontró el div con id ${resultadoId}`);
-            return;
-        }
-    if (valorUsuario.toLowerCase() === formulaCorrecta.toLowerCase()) {
-        resultado.innerHTML = `<p style="color:green">¡Correcto! ✅</p>`;
-    } else {
-        resultado.innerHTML = `<p style="color:red">❌ Incorrecto. Intenta de nuevo.</p>`;
-    }
-}
-  // Limpia mensajes automáticamente al escribir
-  document.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', () => {
-          const ejercicio = input.parentElement;
-          const mensaje = ejercicio.querySelector('.mensaje-resultado');
-          if (mensaje) mensaje.remove();
+      // Normalizar y comparar fórmulas
+      const respuestaUsuario = convertirSubindices(campo.value.trim().toUpperCase());
+      const formulaEsperada = convertirSubindices(formulaCorrecta.trim().toUpperCase());
+
+      if (respuestaUsuario === formulaEsperada) {
+          resultadoDiv.innerHTML = `<p style="color: green;">✔ Correcto: ${formulaCorrecta}</p>`;
+      } else {
+          resultadoDiv.innerHTML = `<p style="color: red;">✖ Incorrecto. Intenta nuevamente.</p>`;
+      }
+  }
+
+  // Borra el mensaje automáticamente al escribir
+  document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('input').forEach(input => {
+          input.addEventListener('input', () => {
+              const resultadoDiv = document.getElementById("resultado" + input.id.match(/\d+/)[0]);
+              if (resultadoDiv) resultadoDiv.innerHTML = "";
+          });
       });
   });
-           function verificarFormula(idCampo, formulaCorrecta) {
-    const campo = document.getElementById(idCampo);
-    const resultadoId = "resultado" + idCampo.match(/\d+/)[0];
-    const resultadoDiv = document.getElementById(resultadoId);
-
-    if (!resultadoDiv) return;
-
-    const respuestaUsuario = campo.value.trim().toUpperCase().replace(/[()₀₁₂₃₄₅₆₇₈₉]/g, match => {
-        // Convert subíndices Unicode a números normales
-        const subindices = {
-            '₀': '0', '₁': '1', '₂': '2', '₃': '3',
-            '₄': '4', '₅': '5', '₆': '6', '₇': '7',
-            '₈': '8', '₉': '9'
-        };
-        return subindices[match] || match;
-    });
-
-    const formulaEsperada = formulaCorrecta.toUpperCase().replace(/[()₀₁₂₃₄₅₆₇₈₉]/g, match => {
-        const subindices = {
-            '₀': '0', '₁': '1', '₂': '2', '₃': '3',
-            '₄': '4', '₅': '5', '₆': '6', '₇': '7',
-            '₈': '8', '₉': '9'
-        };
-        return subindices[match] || match;
-    });
-
-    if (respuestaUsuario === formulaEsperada) {
-        resultadoDiv.innerHTML = `<p style="color: green;">✔ Correcto: ${formulaCorrecta}</p>`;
-    } else {
-        resultadoDiv.innerHTML = `<p style="color: red;">✖ Incorrecto. Intenta nuevamente.</p>`;
-    }
-}
 </script>
+
 </body>
 </html>
 </body>
