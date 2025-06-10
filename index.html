@@ -449,7 +449,17 @@
     const resultado = document.getElementById(resultadoId);
 
     if (!resultado) return;
+        
+function verificarFormula(inputId, formulaCorrecta) {
+        const input = document.getElementById(inputId);
+        const valorUsuario = input.value.trim();
+        const resultadoId = 'resultado' + inputId.match(/\d+/)[0]; // resultado1, resultado2, etc.
+        const resultadoDiv = document.getElementById(resultadoId);
 
+        if (!resultadoDiv) {
+            console.warn(`No se encontró el div con id ${resultadoId}`);
+            return;
+        }
     if (valorUsuario.toLowerCase() === formulaCorrecta.toLowerCase()) {
         resultado.innerHTML = `<p style="color:green">¡Correcto! ✅</p>`;
     } else {
