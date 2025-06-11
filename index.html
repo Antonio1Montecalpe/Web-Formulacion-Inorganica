@@ -430,6 +430,9 @@
         <p>&copy; 2025 Guía de Formulación Inorgánica. Todos los derechos reservados.</p>
     </footer>
        <script>
+           function limpiarResultado(idResultado) {
+  document.getElementById(idResultado).innerText = '';
+}
         // Determinar en qué bloque de resultados mostrar la respuesta
         let resultadoId = '';
         if (inputId.startsWith('oxido')) resultadoId = 'resultado1';
@@ -448,13 +451,6 @@
             resultadoId.innerHTML = `<p style="color:red;">❌ Incorrecto. La fórmula correcta es ${formulaCorrecta}</p>`;
         }
     }
-    // Limpia resultados al escribir
-    document.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', () => {
-            const numero = input.id.match(/\d+/)[0];
-            const resultado = document.getElementById('resultado' + numero);
-            if (resultado) {
-                resultado.innerHTML = '';
 
 </script>
 
